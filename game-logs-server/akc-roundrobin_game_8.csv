@@ -1,0 +1,26 @@
+GameName;GameSettings
+AntiKingChess;
+
+Player;Tournament-Seed;Name;TimeSettings
+0;1;KartoffelKI;120000,0
+1;2;Group04Ki;120000,0
+
+ID;Player;Time (ms);Bonus (ms);Representation;Move;Used time (ms)
+0;0;120000;0;2prbkqA/2p1nnbr/2pppppp/8/8/PPPPPP2/RBNN1P2/aQKBRP2 Aa;Nd2-e4;695
+1;1;120000;0;2prbkqA/2p1nnbr/2pppppp/8/4N3/PPPPPP2/RBN2P2/aQKBRP2 Aa;Pe6-f5;1
+2;0;119305;0;2prbkqA/2p1nnbr/2pp1ppp/5p2/4N3/PPPPPP2/RBN2P2/aQKBRP2 Aa;Pf1-e2;1062
+3;1;119999;0;2prbkqA/2p1nnbr/2pp1ppp/5p2/4N3/PPPPPP2/RBN1PP2/aQKBR3 Aa;Pc8-b7;0
+4;0;118243;0;3rbkqA/1pp1nnbr/2pp1ppp/5p2/4N3/PPPPPP2/RBN1PP2/aQKBR3 Aa;Re1-h1;1112
+5;1;119999;0;3rbkqA/1pp1nnbr/2pp1ppp/5p2/4N3/PPPPPP2/RBN1PP2/aQKB3R Aa;Pc7-b6;1
+6;0;117131;0;3rbkqA/1p2nnbr/1ppp1ppp/5p2/4N3/PPPPPP2/RBN1PP2/aQKB3R Aa;Rh1-h4;1788
+7;1;119998;0;3rbkqA/1p2nnbr/1ppp1ppp/5p2/4N2R/PPPPPP2/RBN1PP2/aQKB4 Aa;Pd6-c5;2
+8;0;115343;0;3rbkqA/1p2nnbr/1pp2ppp/2p2p2/4N2R/PPPPPP2/RBN1PP2/aQKB4 Aa;Kc1-d2;1750
+9;1;119996;0;3rbkqA/1p2nnbr/1pp2ppp/2p2p2/4N2R/PPPPPP2/RBNKPP2/aQ1B4 Aa;Pc6-b5;0
+10;0;113593;0;3rbkqA/1p2nnbr/1p3ppp/1pp2p2/4N2R/PPPPPP2/RBNKPP2/aQ1B4 Aa;Ne4xc5;1581
+11;1;119996;0;3rbkqA/1p2nnbr/1p3ppp/1pN2p2/7R/PPPPPP2/RBNKPP2/aQ1B4 Aa;Pg6-h5;1
+12;0;112012;0;3rbkqA/1p2nnbr/1p3p1p/1pN2p1p/7R/PPPPPP2/RBNKPP2/aQ1B4 Aa;Nc5-e6;639
+end; - ; - ; - ;3rbkqA/1p2nnbr/1p2Np1p/1p3p1p/7R/PPPPPP2/RBNKPP2/aQ1B4 Aa; - ; - 
+
+Player;Tournament-Seed;Name;TimeSettings;Points;Time left (ms)
+0;1;KartoffelKI;120000,0;1;111373
+1;2;Group04Ki;120000,0;0;119995

@@ -1,0 +1,18 @@
+GameName;GameSettings
+AntiKingChess;
+
+Player;Tournament-Seed;Name;TimeSettings
+0;6;Nidoran;120000,0
+1;5;BasicKI;120000,0
+
+ID;Player;Time (ms);Bonus (ms);Representation;Move;Used time (ms)
+0;0;120000;0;2prbkqA/2p1nnbr/2pppppp/8/8/PPPPPP2/RBNN1P2/aQKBRP2 Aa;Pc3-b4;1139
+1;1;120000;0;2prbkqA/2p1nnbr/2pppppp/8/1P6/PP1PPP2/RBNN1P2/aQKBRP2 Aa;Pc8-d7;7
+2;0;118861;0;3rbkqA/2ppnnbr/2pppppp/8/1P6/PP1PPP2/RBNN1P2/aQKBRP2 Aa;Nc2-d4;70
+3;1;119993;0;3rbkqA/2ppnnbr/2pppppp/8/1P1N4/PP1PPP2/RB1N1P2/aQKBRP2 Aa;Rd8-c8;7
+4;0;118791;0;2r1bkqA/2ppnnbr/2pppppp/8/1P1N4/PP1PPP2/RB1N1P2/aQKBRP2 Aa;Nd4xe6;237
+end; - ; - ; - ;2r1bkqA/2ppnnbr/2ppNppp/8/1P6/PP1PPP2/RB1N1P2/aQKBRP2 Aa; - ; - 
+
+Player;Tournament-Seed;Name;TimeSettings;Points;Time left (ms)
+0;6;Nidoran;120000,0;1;118554
+1;5;BasicKI;120000,0;0;119986
