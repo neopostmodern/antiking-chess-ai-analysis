@@ -68,11 +68,17 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, '*.csv')):
                     white_moves.append([int(row[2]), int(row[6])])
 
             elif block_index == 3:
-                if last_block_black and row[4] == '1':
-                    winner_index = BLACK_INDEX
+                if last_block_black:
                     last_block_black = False
-                if row[4] == '1':
-                    winner_index = WHITE_INDEX
+
+                    if row[4] == '1':
+                        winner_index = BLACK_INDEX
+                else:
+                    if row[4] == '1':
+                        if winner_index is None:
+                            winner_index = WHITE_INDEX
+                        else:
+                            winner_index = None  # draw
                     break
 
         player_names = [player['name'] for player in players]
@@ -115,6 +121,12 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, '*.csv')):
             tl.set_color('r')
 
         end_line = time_left_axis.axvline(x=len(black_moves) - 1, color='g')
+
+        if len(white_moves) > 1:
+            plot.xlim([0, max(len(white_moves), len(black_moves)) + 1])
+        else:
+            plot.xlim([-1, 1])
+
 
         labels = ["%s (%d)" % (player['name'], player['seed']) for player in players]
         if winner_index is not None:
