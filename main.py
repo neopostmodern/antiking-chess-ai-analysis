@@ -26,7 +26,7 @@ if os.path.isdir('graphs'):
     shutil.rmtree('graphs')
 os.mkdir('graphs')
 
-for game_log_file_name in glob.glob(os.path.join(args.directory, 'akc-roundrobin_game_*.csv')):
+for game_log_file_name in glob.glob(os.path.join(args.directory, '*.csv')):
     with open(game_log_file_name, newline='') as game_log_file:
         csv_reader = csv.reader(game_log_file, delimiter=';')
 
@@ -38,6 +38,7 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, 'akc-roundrobin
 
         header = True
         block_index = 0
+        last_block_black = True
         for row_index, row in enumerate(csv_reader):
             if header:
                 header = False
@@ -67,8 +68,12 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, 'akc-roundrobin
                     white_moves.append([int(row[2]), int(row[6])])
 
             elif block_index == 3:
-                winner_index = BLACK_INDEX if row[4] == '1' else WHITE_INDEX
-                break
+                if last_block_black and row[4] == '1':
+                    winner_index = BLACK_INDEX
+                    last_block_black = False
+                if row[4] == '1':
+                    winner_index = WHITE_INDEX
+                    break
 
         player_names = [player['name'] for player in players]
 
@@ -86,7 +91,13 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, 'akc-roundrobin
 
         fig, time_left_axis = plot.subplots()
         black_time_left_line, = time_left_axis.plot(range(len(black_moves)), black_moves[:, 0], 'b' + black_line_style, label=BLACK_CHAR)
-        white_time_left_line, = time_left_axis.plot(range(len(white_moves)), white_moves[:, 0], 'b' + white_line_style, label=WHITE_CHAR)
+        white_x = []
+        white_y = []
+        if len(white_moves) > 0:
+            white_x = range(len(white_moves))
+            white_y = white_moves[:, 0]
+
+        white_time_left_line, = time_left_axis.plot(white_x, white_y, 'b' + white_line_style, label=WHITE_CHAR)
         time_left_axis.set_xlabel('turn')
 
         time_left_axis.set_ylabel('remaining time', color='b')
@@ -96,7 +107,9 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, 'akc-roundrobin
 
         time_per_move_axis = time_left_axis.twinx()
         time_per_move_axis.plot(range(len(black_moves)), black_moves[:, 1], 'r' + black_line_style, label=BLACK_CHAR)
-        time_per_move_axis.plot(range(len(white_moves)), white_moves[:, 1], 'r' + white_line_style, label=WHITE_CHAR)
+        if len(white_moves) > 0:
+            white_y = white_moves[:, 1]
+        time_per_move_axis.plot(white_x, white_y, 'r' + white_line_style, label=WHITE_CHAR)
         time_per_move_axis.set_ylabel('time per move', color='r')
         for tl in time_per_move_axis.get_yticklabels():
             tl.set_color('r')
@@ -104,10 +117,11 @@ for game_log_file_name in glob.glob(os.path.join(args.directory, 'akc-roundrobin
         end_line = time_left_axis.axvline(x=len(black_moves) - 1, color='g')
 
         labels = ["%s (%d)" % (player['name'], player['seed']) for player in players]
-        labels.append('Game won by %s' % player_names[winner_index])
+        if winner_index is not None:
+            labels.append('Game won by %s' % player_names[winner_index])
+        else:
+            labels.append('Game ended in a draw')
 
-        # box = time_left_axis.get_position()
-        # time_left_axis.set_position([box.x0, box.y0 + box.height * 0.1, box.width, box.height * 0.9])
         legend = fig.legend(
             handles=[black_time_left_line, white_time_left_line, end_line],
             labels=labels,
